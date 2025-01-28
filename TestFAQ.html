@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- React --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Babel --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Tailwind CSS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;FAQ Component&lt;/title&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="faq-root"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script type="text/babel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const FAQSection = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [openItems, setOpenItems] = React.useState(new Set());</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Aquí puedes personalizar las preguntas y respuestas</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const faqs = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id: 1,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>question: "¿Qué es una traducción certificada y por qué la necesito?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>answer: "Una traducción certificada es un documento traducido que incluye una declaración formal del traductor certificando la precisión y completitud de la traducción. USCIS y otras agencias gubernamentales requieren traducciones certificadas para:\n\n• Documentos de identificación personal\n• Certificados de nacimiento, matrimonio o defunción\n• Documentos académicos\n• Documentos legales\n\nCada traducción incluye una certificación que confirma que la traducción es completa y precisa, firmada por el traductor certificado."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id: 2,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>question: "¿Cuál es la diferencia entre una traducción certificada y una notarizada?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>answer: "• Traducción Certificada ($25/página): Incluye la traducción profesional y una declaración firmada por el traductor certificando su precisión.\n\n• Traducción Notarizada ($30/página): Incluye todo lo anterior más una certificación notarial donde un notario público da fe de la identidad del traductor y su firma. Algunos procesos específicos pueden requerir esta verificación adicional."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id: 3,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>question: "¿Cuánto tiempo toma recibir mi traducción?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>answer: "Nuestros tiempos de entrega estándar son:\n\n• Servicio Regular: 24-48 horas hábiles\n• Servicio Urgente: Entrega en 24 horas (cargo adicional)\n\nEl tiempo exacto depende del número de páginas y la complejidad del documento. Para documentos extensos o requerimientos especiales, le proporcionaremos un estimado específico al momento de su orden."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id: 4,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>question: "¿Qué formatos de documento aceptan?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>answer: "Aceptamos documentos en los siguientes formatos:\n\n• PDF\n• Imágenes (JPG, PNG)\n• Documentos de Word\n• Documentos escaneados\n\nPara obtener mejores resultados, recomendamos enviar documentos claros y legibles con una resolución mínima de 300 DPI. Si tiene dudas sobre la calidad de su documento, podemos revisarlo sin compromiso."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Puedes agregar más preguntas aquí</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const toggleItem = (id) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const newOpenItems = new Set(openItems);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (newOpenItems.has(id)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>newOpenItems.delete(id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>newOpenItems.add(id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setOpenItems(newOpenItems);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="w-full max-w-4xl mx-auto py-12 px-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="text-center mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h2 className="text-3xl font-bold mb-4"&gt;Preguntas Frecuentes&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p className="text-lg text-gray-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Todo lo que necesita saber sobre nuestros servicios de traducción</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{faqs.map((faq) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>key={faq.id}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>className="border border-gray-200 rounded-lg hover:border-blue-200 transition-colors bg-white"</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="w-full text-left"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onClick={() =&gt; toggleItem(faq.id)}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div className="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;div className="flex items-center justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;h3 className="text-lg font-semibold"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>{faq.question}</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;svg<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>className={`w-5 h-5 text-blue-600 transform ${openItems.has(faq.id) ? 'rotate-45' : ''} transition-transform`}</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>fill="none"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>viewBox="0 0 24 24"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>stroke="currentColor"</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>&lt;path<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>strokeLinecap="round"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>strokeLinejoin="round"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>strokeWidth={2}<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>d="M12 4v16m8-8H4"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/button&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                                </span></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>{openItems.has(faq.id) &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div className="px-6 pb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;div className="text-gray-600 whitespace-pre-line"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>{faq.answer}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>)}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>))}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="mt-12 p-6 bg-blue-50 rounded-lg text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p className="text-lg font-semibold mb-2"&gt;¿Tiene más preguntas?&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p className="text-gray-600 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Contáctenos para recibir una cotización gratuita</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button className="bg-white text-blue-600 border-2 border-blue-600 py-2 px-6 rounded-lg hover:bg-blue-50 transition-colors"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Solicitar Cotización</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Render the component</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ReactDOM.render(&lt;FAQSection /&gt;, document.getElementById('faq-root'));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
