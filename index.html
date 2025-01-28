@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- React -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-    <!-- Babel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
-    <!-- Tailwind CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <title>FAQ Component</title>
+    <style>
+        body { margin: 0; overflow-y: hidden; }
+    </style>
 </head>
 <body>
     <div id="faq-root"></div>
@@ -19,29 +18,25 @@
         const FAQSection = () => {
             const [openItems, setOpenItems] = React.useState(new Set());
 
-            // Aquí puedes personalizar las preguntas y respuestas
+            // Add useEffect to handle height updates
+            React.useEffect(() => {
+                const sendHeight = () => {
+                    const height = document.documentElement.scrollHeight;
+                    window.parent.postMessage({ type: 'setHeight', height }, '*');
+                };
+
+                // Send initial height
+                sendHeight();
+
+                // Send height after any state changes
+                const observer = new ResizeObserver(sendHeight);
+                observer.observe(document.body);
+
+                return () => observer.disconnect();
+            }, [openItems]); // Re-run when openItems changes
+
             const faqs = [
-                {
-                    id: 1,
-                    question: "¿Qué es una traducción certificada y por qué la necesito?",
-                    answer: "Una traducción certificada es un documento traducido que incluye una declaración formal del traductor certificando la precisión y completitud de la traducción. USCIS y otras agencias gubernamentales requieren traducciones certificadas para:\n\n• Documentos de identificación personal\n• Certificados de nacimiento, matrimonio o defunción\n• Documentos académicos\n• Documentos legales\n\nCada traducción incluye una certificación que confirma que la traducción es completa y precisa, firmada por el traductor certificado."
-                },
-                {
-                    id: 2,
-                    question: "¿Cuál es la diferencia entre una traducción certificada y una notarizada?",
-                    answer: "• Traducción Certificada ($25/página): Incluye la traducción profesional y una declaración firmada por el traductor certificando su precisión.\n\n• Traducción Notarizada ($30/página): Incluye todo lo anterior más una certificación notarial donde un notario público da fe de la identidad del traductor y su firma. Algunos procesos específicos pueden requerir esta verificación adicional."
-                },
-                {
-                    id: 3,
-                    question: "¿Cuánto tiempo toma recibir mi traducción?",
-                    answer: "Nuestros tiempos de entrega estándar son:\n\n• Servicio Regular: 24-48 horas hábiles\n• Servicio Urgente: Entrega en 24 horas (cargo adicional)\n\nEl tiempo exacto depende del número de páginas y la complejidad del documento. Para documentos extensos o requerimientos especiales, le proporcionaremos un estimado específico al momento de su orden."
-                },
-                {
-                    id: 4,
-                    question: "¿Qué formatos de documento aceptan?",
-                    answer: "Aceptamos documentos en los siguientes formatos:\n\n• PDF\n• Imágenes (JPG, PNG)\n• Documentos de Word\n• Documentos escaneados\n\nPara obtener mejores resultados, recomendamos enviar documentos claros y legibles con una resolución mínima de 300 DPI. Si tiene dudas sobre la calidad de su documento, podemos revisarlo sin compromiso."
-                }
-                // Puedes agregar más preguntas aquí
+                // Your existing FAQ items here...
             ];
 
             const toggleItem = (id) => {
@@ -54,72 +49,9 @@
                 setOpenItems(newOpenItems);
             };
 
-            return (
-                <div className="w-full max-w-4xl mx-auto py-12 px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold mb-4">Preguntas Frecuentes</h2>
-                        <p className="text-lg text-gray-600">
-                            Todo lo que necesita saber sobre nuestros servicios de traducción
-                        </p>
-                    </div>
-
-                    <div className="space-y-4">
-                        {faqs.map((faq) => (
-                            <div 
-                                key={faq.id}
-                                className="border border-gray-200 rounded-lg hover:border-blue-200 transition-colors bg-white"
-                            >
-                                <button
-                                    className="w-full text-left"
-                                    onClick={() => toggleItem(faq.id)}
-                                >
-                                    <div className="p-6">
-                                        <div className="flex items-center justify-between">
-                                            <h3 className="text-lg font-semibold">
-                                                {faq.question}
-                                            </h3>
-                                            <svg 
-                                                className={`w-5 h-5 text-blue-600 transform ${openItems.has(faq.id) ? 'rotate-45' : ''} transition-transform`}
-                                                fill="none" 
-                                                viewBox="0 0 24 24" 
-                                                stroke="currentColor"
-                                            >
-                                                <path 
-                                                    strokeLinecap="round" 
-                                                    strokeLinejoin="round" 
-                                                    strokeWidth={2} 
-                                                    d="M12 4v16m8-8H4" 
-                                                />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </button>
-                                
-                                {openItems.has(faq.id) && (
-                                    <div className="px-6 pb-6">
-                                        <div className="text-gray-600 whitespace-pre-line">
-                                            {faq.answer}
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-12 p-6 bg-blue-50 rounded-lg text-center">
-                        <p className="text-lg font-semibold mb-2">¿Tiene más preguntas?</p>
-                        <p className="text-gray-600 mb-4">
-                            Contáctenos para recibir una cotización gratuita
-                        </p>
-                        <button className="bg-white text-blue-600 border-2 border-blue-600 py-2 px-6 rounded-lg hover:bg-blue-50 transition-colors">
-                            Solicitar Cotización
-                        </button>
-                    </div>
-                </div>
-            );
+            // Rest of your component code...
         };
 
-        // Render the component
         ReactDOM.render(<FAQSection />, document.getElementById('faq-root'));
     </script>
 </body>
